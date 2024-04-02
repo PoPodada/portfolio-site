@@ -1,11 +1,21 @@
+'use client'
 import Image from "next/image";
-import { FC } from "react";
+import { FC} from "react";
+import { usePathname } from 'next/navigation';
 import { Icons } from "./Icons";
 import Button from "@mui/material/Button";
+import clsx from 'clsx';
+import Link from 'next/link';
 
 export const Profile: FC = () => {
+  const pathname = usePathname();
+  const links = [
+    {name:'Profile',href:'/'},
+    { name: 'Articles', href: '/dashboard' },
+    
+  ];
   return (
-    <article>
+    <>
       <Image
         src="/PoPodada.png"
         width={150}
@@ -15,21 +25,23 @@ export const Profile: FC = () => {
       ></Image>
       <h2>PoPodada</h2>
       <Icons />
-      <div>
-        <Button
-          variant="contained"
-          style={{ color: "#1F273D", backgroundColor: "white" }}
-        >
-          プロフィール
-        </Button>
-        <Button
-          variant="contained"
-          style={{ color: "#1F273D", backgroundColor: "white" }}
-        >
-          記事
-        </Button>
+      
         
-      </div>
-    </article>
+        {links.map((link) => {
+        return (
+          <Link
+            key={link.name}
+            href={link.href}
+          >
+            <Button
+             variant={pathname === link.href ? 'contained' : 'outlined'}
+            //  style={pathname === link.href ?{ color: "1F273D", backgroundColor: "white" }:{color:"#FFFFFF"}}
+             >
+            <p className="hidden md:block">{link.name}</p>
+            </Button>
+          </Link>
+        );
+      })}
+    </>
   );
 };

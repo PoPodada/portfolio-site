@@ -6,7 +6,6 @@ const Home:NextPage = () => {
   return (
     <>
     <p>mainページ</p>
-    <Profile />
     </>
   );
 }
