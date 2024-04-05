@@ -4,7 +4,6 @@ import { FC} from "react";
 import { usePathname } from 'next/navigation';
 import { Icons } from "./Icons";
 import Button from "@mui/material/Button";
-import clsx from 'clsx';
 import Link from 'next/link';
 
 export const Profile: FC = () => {
@@ -16,17 +15,23 @@ export const Profile: FC = () => {
   ];
   return (
     <>
-      <Image
+    <div className="h-screen flex flex-col items-center justify-center">
+    <Image
         src="/PoPodada.png"
         width={150}
         height={760}
-        className="hidden md:block"
+        className="hidden md:block mx-auto "
         alt="PoPodada"
+        priority
       ></Image>
-      <h2>PoPodada</h2>
+      <h2 className="flex justify-center">PoPodada</h2>
       <Icons />
+    </div>
+    
       
-        
+      
+      
+    <div className="flex justify-between w-[300px] mx-auto">
         {links.map((link) => {
         return (
           <Link
@@ -35,13 +40,13 @@ export const Profile: FC = () => {
           >
             <Button
              variant={pathname === link.href ? 'contained' : 'outlined'}
-            //  style={pathname === link.href ?{ color: "1F273D", backgroundColor: "white" }:{color:"#FFFFFF"}}
              >
             <p className="hidden md:block">{link.name}</p>
             </Button>
           </Link>
         );
       })}
+      </div>
     </>
   );
 };
