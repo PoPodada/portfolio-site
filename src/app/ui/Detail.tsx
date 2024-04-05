@@ -2,7 +2,7 @@ import { FC } from "react";
 export const Detail:FC = () => {
     return(
         <>
-        <div className="text-white">
+        <div className="text-white w-[300px] mx-auto mt-20 mb-[100px]">
         <h2>所属</h2>
         <p>2022年4月-2026年3月(予定)</p>
         <p>広島市立大学</p>
